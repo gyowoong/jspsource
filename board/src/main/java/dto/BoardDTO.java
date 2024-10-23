@@ -6,6 +6,7 @@ import lombok.Data;
 
 // @Data == @Getter, @Setter, @EqualsAndHashCode, @toString, @NoArgsContructors
 
+
 @Data
 public class BoardDTO {
 	private int bno;
@@ -18,5 +19,5 @@ public class BoardDTO {
 	private int reLev;
 	private int reSeq;
 	private int readcnt;
-	private Date regdate;
+	private Date regdate;	
 }

@@ -12,28 +12,27 @@ import service.BoardServiceImpl;
 
 
 @AllArgsConstructor
-public class BoardUpdateAction implements Action {
+public class BoardDeleteAction implements Action {
 	
 	private String path;
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		BoardDTO updateDto = new BoardDTO();
+		BoardDTO deleteDto = new BoardDTO();
 		
-		updateDto.setBno(Integer.parseInt(request.getParameter("bno")));
-		updateDto.setPassword(request.getParameter("password"));
-		updateDto.setTitle(request.getParameter("title"));
-		updateDto.setContent(request.getParameter("content"));
+		deleteDto.setBno(Integer.parseInt(request.getParameter("bno")));
+		deleteDto.setPassword(request.getParameter("password"));
+		
 		
 		BoardService service = new BoardServiceImpl();	
-		boolean updateFlag = service.update(updateDto);
+		boolean updateFlag = service.delete(deleteDto);
 		
 		if(updateFlag) {
-			// 성공 시 bno 보내기(상세조회 시 필요)
-			path += "?bno="+updateDto.getBno();
+			// 성공 시 
+			// path += "?bno="+updateDto.getBno();
 		}else {
-			path = "/modify.do?bno="+updateDto.getBno();
+			path = "/modify.do?bno="+deleteDto.getBno();
 		}	
 		
 		return new ActionForward(path, true);

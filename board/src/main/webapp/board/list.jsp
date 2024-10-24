@@ -7,6 +7,8 @@
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<form action="/list.do" id="searchForm">
+			    <input type="hidden" name="page" value="${pageDTO.searchDTO.page}" />
+	            <input type="hidden" name="amount" value="${pageDTO.searchDTO.amount}" />
 				<select name="criteria" id="" class="form-select">
 					<option value="n"  <c:out value="${searchDTO.criteria == null?'selected':''}" />>-------</option>
 					<option value="title" <c:out value="${searchDTO.criteria == 'title'?'selected':''}" />>title</option>
@@ -14,6 +16,7 @@
 					<option value="name" <c:out value="${searchDTO.criteria == 'name'?'selected':''}" />>name</option>
 				</select>
 				<input type="text" name="keyword" id="keyword" value="${searchDTO.keyword}"/>
+				
 				<button class="btn btn-warning">검색</button>
 			</form>		
 		</div>
@@ -77,10 +80,10 @@
 <%-- 페이지 나누기  --%>
 <form action="" method="get" id="actionForm">
 	<input type="hidden" name="bno" value=""/>
-	<input type="hidden" name="page" value="${pageDTO.searchDTO.page}"/>
-	<input type="hidden" name="amount" value="${pageDTO.searchDTO.amount}"/>
-	<input type="hidden" name="criteria" value="${pageDTO.searchDTO.criteria}"/>
-	<input type="hidden" name="keyword" value="${pageDTO.searchDTO.keyword}"/>
+	<input type="hidden" name="page" value="${pageDTO.searchDTO.page}" />
+	<input type="hidden" name="amount" value="${pageDTO.searchDTO.amount}" />
+	<input type="hidden" name="criteria" value="${pageDTO.searchDTO.criteria}" />
+	<input type="hidden" name="keyword" value="${pageDTO.searchDTO.keyword}" />
 </form>
 <script src="/js/custom/list.js"></script>
 <%@ include file="../include/footer.jsp"%>
